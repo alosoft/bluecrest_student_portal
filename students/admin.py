@@ -1,5 +1,5 @@
 from django.contrib import admin
-from students import models
+from students.models import Record, UserProfileInfo
 
 
 # Register your models here.
@@ -12,4 +12,5 @@ class RecordsAdmin(admin.ModelAdmin):
                     'no_of_students', 'planned_sessions', 'actual_sessions', 'attendance', 'faculty']
 
 
-admin.site.register(models.Record, RecordsAdmin)
+admin.site.register(Record, RecordsAdmin)
+admin.site.register(UserProfileInfo)

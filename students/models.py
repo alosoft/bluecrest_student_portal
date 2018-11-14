@@ -1,9 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your database models here.
-class Record(models.Model):
+class UserProfileInfo(models.Model):
+    user = models.OneToOneField(User, on_delete='')
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
 
+    def __str__(self):
+        return self.user.username
+
+
+class Record(models.Model):
     BBA = 'BBA'
     BScIT1 = 'BScIT1'
     BScIT = 'BScIT'

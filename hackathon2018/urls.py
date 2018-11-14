@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from hackathon2018 import settings
 from students import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Index.as_view(), name='index'),
+    path('', views.index, name='index'),
+    path('students/', include('students.urls')),
+    path('logout/', views.user_logout, name='logout'),
+    path('portal/', views.portal, name='portal'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

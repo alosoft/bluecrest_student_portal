@@ -1,225 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="/static/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-
-    <title>Students Portal | BlueCrest</title>
-
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-
-    <link href="/static/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/static/css/fresh-bootstrap-table.css" rel="stylesheet"/>
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-
-    <style type="text/css">
-        .fresh-table .fixed-table-toolbar .dropdown-menu {
-            overflow: auto;
-        }
-
-
-        body > div > div > div.bootstrap-table > div.fixed-table-toolbar > div.columns.columns-right.pull-right > button:nth-child(1) {
-            display: none;
-        }
-        @media (min-width: 650px) {
-            body > div > div > div.bootstrap-table > div.fixed-table-toolbar > div.bars.pull-left {
-                margin-left: 100px;
-            }
-            .keep-open.btn-group {
-                margin-right: 100px;
-            }
-            body > div > div > div.bootstrap-table > div.fixed-table-toolbar > div.columns.columns-right.pull-right {
-                margin-top: 35px;
-            }
-            body > div > div > div.bootstrap-table > div.fixed-table-toolbar > div.pull-right.search {
-                margin-top: 35px;
-            }
-        }
-    </style>
-
+    <meta charset="UTF-8">
+    <title>home</title>
 </head>
 <body>
+<h1>home</h1>
 
-<div class="wrapper">
-    <div class="fresh-table toolbar-color-azure full-screen-table">
-        <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
-                Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-        -->
+<h1><a href="{% url 'students:register' %}">Register</a></h1>
+<h1><a href="{% url 'admin:index' %}">Admin</a></h1>
+<h1><a href="{% url 'portal' %}">Portal</a></h1>
 
-        <div class="toolbar">
-{#            <div class="logo">#}
-{#                <img src="/static/img/logo.png" width="100" height="60">#}
-{#            </div>#}
-{#            <div class="brand">#}
-{#                Students Portal#}
-{#            </div>#}
-            <div class="logo-container full-screen-table-demo">
-                <div class="logo">
-                    <img src="/static/img/logo.png" width="100" height="60">
-                    {#                    <img src="assets/img/new_logo.png">#}
-                </div>
-                <div class="brand" style="font-weight: bolder; color: white;">
-                    Students Portal
-                </div>
-            </div>
-        </div>
-
-        <table id="fresh-table" class="table">
-            <thead>
-            <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="batch code" data-sortable="true">Batch Code</th>
-            <th data-field="time pattern" data-sortable="true">Time Pattern</th>
-            <th data-field="session" data-sortable="true">Session</th>
-            <th data-field="program" data-sortable="true">Program</th>
-            <th data-field="semester" data-sortable="true">Semester</th>
-            <th data-field="course" data-sortable="true">Course</th>
-            <th data-field="course name" data-sortable="true">Course Name</th>
-            <th data-field="planned start date" data-sortable="true">Planned Start date</th>
-            <th data-field="planned end date" data-sortable="true">Planned End Date</th>
-            <th data-field="actual start date" data-sortable="true">Actual Start Date</th>
-            <th data-field="actual end date" data-sortable="true">Actual End Date</th>
-            <th data-field="no of students" data-sortable="true">No. of Students</th>
-            <th data-field="planned sessions" data-sortable="true">Planned Sessions</th>
-            <th data-field="actual sessions" data-sortable="true">Actual Sessions</th>
-            <th data-field="attendance" data-sortable="true">Attendance %</th>
-            <th data-field="faculty" data-sortable="true">Faculty</th>
-            {#            <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>#}
-            </thead>
-            <tbody>
-            {% for record in record_list reversed %}
-                <tr>
-                    <td>{{ record.id }}</td>
-                    <td>{{ record.batch_code }}</td>
-                    <td>{{ record.time_pattern }}</td>
-                    <td>{{ record.session }}</td>
-                    <td>{{ record.program }}</td>
-                    <td>{{ record.semester }}</td>
-                    <td>{{ record.course }}</td>
-                    <td>{{ record.course_name }}</td>
-                    <td>{{ record.planned_start_date }}</td>
-                    <td>{{ record.planned_end_date }}</td>
-                    {% if record.actual_start_date == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.actual_start_date }}</td>
-                    {% endif %}
-                    {% if record.actual_end_date == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.actual_end_date }}</td>
-                    {% endif %}
-                    <td>{{ record.no_of_students }}</td>
-                    <td>{{ record.planned_sessions }}</td>
-                    <td>{{ record.actual_sessions }}</td>
-                    {% if record.attendance == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.attendance }} %</td>
-                    {% endif %}
-                    <td>{{ record.faculty }}</td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
-    </div>
-
-</div>
+{% if user.is_authenticated %}
+    <h1>Currently logged in user {{ user.username }}</h1>
+    <h1><a href="{% url 'logout' %}">Logout</a></h1>
+{% else %}
+    <h1><a href="{% url 'students:user_login' %}">Login</a></h1>
+{% endif %}
 
 
 </body>
-<script type="text/javascript" src="/static/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap-table.js"></script>
-
-<script type="text/javascript">
-  var $table = $('#fresh-table'),
-      $alertBtn = $('#alertBtn'),
-      full_screen = false,
-      window_height;
-
-  $().ready(function () {
-
-    window_height = $(window).height();
-    table_height = window_height - 20;
-
-
-    $table.bootstrapTable({
-      toolbar: ".toolbar",
-
-      showRefresh: true,
-      search: true,
-      showToggle: true,
-      showColumns: true,
-      pagination: true,
-      striped: true,
-      sortable: true,
-      height: table_height,
-      pageSize: 25,
-      pageList: [25, 50, 100],
-
-      formatShowingRows: function (pageFrom, pageTo, totalRows) {
-        //do nothing here, we don't want to show the text "showing x of y from..."
-      },
-      formatRecordsPerPage: function (pageNumber) {
-        return pageNumber + " rows visible";
-      },
-      icons: {
-        refresh: 'fa fa-refresh',
-        toggle: 'fa fa-th-list',
-        columns: 'fa fa-columns',
-        detailOpen: 'fa fa-plus-circle',
-        detailClose: 'fa fa-minus-circle'
-      }
-    });
-
-    window.operateEvents = {
-      'click .like': function (e, value, row, index) {
-        alert('You click like icon, row: ' + JSON.stringify(row));
-        console.log(value, row, index);
-      },
-      'click .edit': function (e, value, row, index) {
-        alert('You click edit icon, row: ' + JSON.stringify(row));
-        console.log(value, row, index);
-      },
-      'click .remove': function (e, value, row, index) {
-        $table.bootstrapTable('remove', {
-          field: 'id',
-          values: [row.id]
-        });
-
-      }
-    };
-
-    $alertBtn.click(function () {
-      alert("You pressed on Alert");
-    });
-
-
-    $(window).resize(function () {
-      $table.bootstrapTable('resetView');
-    });
-  });
-
-
-  function operateFormatter(value, row, index) {
-    return [
-      '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
-      '<i class="fa fa-heart"></i>',
-      '</a>',
-      '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
-      '<i class="fa fa-edit"></i>',
-      '</a>',
-      '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
-      '<i class="fa fa-remove"></i>',
-      '</a>'
-    ].join('');
-  }
-
-</script>
-
 </html>
