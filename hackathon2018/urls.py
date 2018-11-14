@@ -23,5 +23,4 @@ from students import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index.as_view(), name='index'),
-    path('test/', views.test, name='test')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

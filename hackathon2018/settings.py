@@ -26,7 +26,7 @@ SECRET_KEY = 'zi%il^k@-495g4dp2_m%10pwylz2pj&#_$4wne3#a6_y!eyvrh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'hackathon2018.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'students/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,6 +122,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Extra places for collectstatic to find static files
 STATICFILES_DIRS = (
