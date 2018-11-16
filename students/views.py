@@ -59,7 +59,7 @@ def register(request):
 
             profile.save()
 
-            registered = True
+            # registered = True
 
         else:
             print('form wasn\'t valid')
@@ -71,10 +71,10 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
 
-    return render(request, 'students/register.html', {
+    return render(request, 'students/index.html', {
         'user_form': user_form,
         'profile_form': profile_form,
-        'registered': registered
+        # 'registered': registered
     })
 
 
@@ -108,10 +108,10 @@ def user_login(request):
         else:
             print('Login attempt failed')
             print(f'Username: {username} and password {password}')
-            return HttpResponse('invalid login details supplied')
+            return HttpResponse('invalid login details supplied <a href="/students/login/">Go Back</a>')
 
     else:
-        return render(request, 'students/login.html', {})
+        return render(request, 'students/index.html', {})
 
 # def index(request):
 #     data = models.Record.objects.all()
