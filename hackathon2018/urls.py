@@ -16,14 +16,18 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import urls as auth_urls
 
 from hackathon2018 import settings
 from students import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin_dashboard/', admin.site.urls),
     path('', views.index, name='index'),
+    path('accounts/', include(auth_urls)),
+    path('accounts/profile/', views.index, name='index'),
     path('students/', include('students.urls')),
+    # path('test/', include(auth_urls)),
     path('logout/', views.user_logout, name='logout'),
     path('portal/', views.portal, name='portal'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

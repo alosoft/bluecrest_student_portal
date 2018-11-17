@@ -1,29 +1,3 @@
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>home</title>#}
-{#</head>#}
-{#<body>#}
-{#<h1>home</h1>#}
-{##}
-{#<h1><a href="{% url 'students:register' %}">Register</a></h1>#}
-{#<h1><a href="{% url 'admin:index' %}">Admin</a></h1>#}
-{#<h1><a href="{% url 'portal' %}">Portal</a></h1>#}
-{##}
-{#{% if user.is_authenticated %}#}
-{#    <h1>Currently logged in user {{ user.username }}</h1>#}
-{#    <h1><a href="{% url 'logout' %}">Logout</a></h1>#}
-{#{% else %}#}
-{#    <h1><a href="{% url 'students:user_login' %}">Login</a></h1>#}
-{#{% endif %}#}
-{##}
-{##}
-{#</body>#}
-{#</html>#}
-{##}
-
-
 <!DOCTYPE html>
 <html>
 
@@ -43,11 +17,15 @@
     <!-- Argon CSS -->
     <link type="text/css" href="/static/css/argon.css?v=1.0.1" rel="stylesheet">
     <!-- Docs CSS -->
-    <link type="text/css" href="/static/css/docs.min.css" rel="stylesheet">
+{#    <link type="text/css" href="/static/css/docs.min.css" rel="stylesheet">#}
+    <link type="text/css" href="/static/css/animate.css" rel="stylesheet">
 
     <style type="text/css">
+        ul.errorlist {
+            list-style: none;
+        }
         section.section {
-            background-image: url(https://www.bluecrest.edu.gh/data0/images/banner1.jpg);
+            background-image: url(/static/img/blue_home.jpg);
             background-position: center;
             background-size: cover;
         }
@@ -66,7 +44,7 @@
 <nav id="navbar-main"
      class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom--not-bottom headroom--pinned headroom--top">
     <div class="container">
-        <a class="navbar-brand mr-lg-5" href="./index.html">
+        <a class="navbar-brand mr-lg-5" href="">
             <img src="/static/img/logo.png"> Student Portal
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
@@ -120,38 +98,38 @@
                 <li>
                     <a class="navbar-brand mr-lg-5" href="/portal" style="text-shadow: 1px 2px 3px black">Portal</a>
                 </li>
-{#                {% if user.is_authenticated %}#}
-{#                    <li>#}
-{#                        <a id="user" class="" href="#" data-toggle="dropdown">#}
-{#                            <div class="profile-photo-small">#}
-{#                                {% if user.userprofileinfo.profile_pic %}#}
-{#                                    <img src="{{ user.userprofileinfo.profile_pic.url }}"#}
-{#                                         style="width: 60px; height: 60px;"#}
-{#                                         class="rounded-circle img-fluid" alt="Profile">#}
-{#                                {% else %}#}
-{#                                    <img src="/static/img/default-avatar.png" style="width: 60px; height: 60px;"#}
-{#                                         class="rounded-circle img-fluid" alt="Profile">#}
-{#                                {% endif %}#}
-{#                            </div>#}
-{#                            <div class="ripple-container"></div>#}
-{#                        </a>#}
-{#                        <div style="background: transparent;" class="dropdown-menu dropdown-menu-right">#}
-{#                            <!-- <a href="/profile" class="dropdown-item">Profile</a> -->#}
-{#                            <!-- <a href="/new" class="dropdown-item">Add Video</a> -->#}
-{#                            <a href="/new" class="dropdown-item">Add Picture</a>#}
-{#                            <a href="/logout" class="dropdown-item">Sign out</a>#}
-{#                        </div>#}
-{#                    </li>#}
-{#                {% endif %}#}
-                            {% if user.is_authenticated %}
+                {#                {% if user.is_authenticated %}#}
+                {#                    <li>#}
+                {#                        <a id="user" class="" href="#" data-toggle="dropdown">#}
+                {#                            <div class="profile-photo-small">#}
+                {#                                {% if user.userprofileinfo.profile_pic %}#}
+                {#                                    <img src="{{ user.userprofileinfo.profile_pic.url }}"#}
+                {#                                         style="width: 60px; height: 60px;"#}
+                {#                                         class="rounded-circle img-fluid" alt="Profile">#}
+                {#                                {% else %}#}
+                {#                                    <img src="/static/img/default-avatar.png" style="width: 60px; height: 60px;"#}
+                {#                                         class="rounded-circle img-fluid" alt="Profile">#}
+                {#                                {% endif %}#}
+                {#                            </div>#}
+                {#                            <div class="ripple-container"></div>#}
+                {#                        </a>#}
+                {#                        <div style="background: transparent;" class="dropdown-menu dropdown-menu-right">#}
+                {#                            <!-- <a href="/profile" class="dropdown-item">Profile</a> -->#}
+                {#                            <!-- <a href="/new" class="dropdown-item">Add Video</a> -->#}
+                {#                            <a href="/new" class="dropdown-item">Add Picture</a>#}
+                {#                            <a href="/logout" class="dropdown-item">Sign out</a>#}
+                {#                        </div>#}
+                {#                    </li>#}
+                {#                {% endif %}#}
+                {% if user.is_authenticated %}
 
-                <li class="nav-item dropdown">
-{#                    <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">#}
-{#                        <i class="ni ni-collection d-lg-none"></i>#}
-{#                        <span class="nav-link-inner--text">Examples</span>#}
-{#                    </a>#}
-{#                    <a id="user" class="" href="#" data-toggle="dropdown">#}
-                    <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <li class="nav-item dropdown">
+                        {#                    <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">#}
+                        {#                        <i class="ni ni-collection d-lg-none"></i>#}
+                        {#                        <span class="nav-link-inner--text">Examples</span>#}
+                        {#                    </a>#}
+                        {#                    <a id="user" class="" href="#" data-toggle="dropdown">#}
+                        <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
                             <div class="profile-photo-small">
                                 {% if user.userprofileinfo.profile_pic %}
                                     <img src="{{ user.userprofileinfo.profile_pic.url }}"
@@ -164,11 +142,14 @@
                             </div>
                             <div class="ripple-container"></div>
                         </a>
-                    <div class="dropdown-menu">
-                        <a href="/logout/" class="dropdown-item">Sign Out</a>
-                    </div>
-                </li>
-            {% endif %}
+
+                        <div class="dropdown-menu">
+                            <a href="/accounts/password_change/" class="dropdown-item">Change Password</a>
+                            <a href="/logout/" class="dropdown-item">Sign Out</a>
+                        </div>
+
+                    </li>
+                {% endif %}
 
             </ul>
         </div>
@@ -187,6 +168,20 @@
         <span></span>
         <span></span>
     </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="container" style="height: 10vh;">
+                <div class="row">
+                    <div class="col-6 mr-auto ml-auto">
+                        <div class="alert alert-success text-center animated fadeOut delay-5s" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
     <div class="container py-md">
         <div class="row row-grid justify-content-between align-items-center" style="margin-top: 60px">
             <div class="col-lg-6">
@@ -197,13 +192,6 @@
                     Records.
                     Now its possible to access Students Records via this platform. All you need to do is sign up and
                     you're ready to go.</p>
-                <!--<p class="lead text-white">The Design System comes with four pre-built pages to help you get started-->
-                <!--faster. You can change the text and images and you're good to go. More importantly, looking at them-->
-                <!--will give you a picture of what you can built with this powerful Bootstrap 4 Design System.</p>-->
-                <!--<div class="btn-wrapper">-->
-                <!--<a href="./examples/login.html" class="btn btn-success">Login Page</a>-->
-                <!--<a href="./examples/register.html" class="btn btn-white">Register Page</a>-->
-                <!--</div>-->
             </div>
             {#            if a user is logged in show this carousel#}
             {% if user.is_authenticated %}
@@ -243,6 +231,9 @@
                                 <div class="text-center text-muted mb-4">
                                     <h3>Welcome, Login</h3>
                                 </div>
+                                {% if form.errors %}
+                                    <p>Your username and password didn't match. Please try again.</p>
+                                {% endif %}
                                 <form role="form" method="post" action="/students/login/">
                                     {{ form.non_field_errors }}
                                     {% csrf_token %}
@@ -275,8 +266,11 @@
                                     <!--</div>-->
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary my-4">Sign in</button>
-                                        <p>New here? <a type="button" data-toggle="modal"
-                                                        data-target="#modal-form">Register</a></p>
+                                        <p>New here?
+                                            <a type="button" data-toggle="modal" data-target="#modal-form"
+                                               style="-webkit-appearance: none;cursor: pointer;">Register</a>
+                                        </p>
+                                        <p><a href="/accounts/password_reset/">Forgotten Password?</a></p>
                                         <!--<button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-form">Register</button>-->
                                     </div>
                                 </form>
@@ -294,25 +288,25 @@
             <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
         </svg>
     </div>
-{#    <div class="container">#}
-{#        <div class="row">#}
-{##}
-{#            <h1>home</h1>#}
-{##}
-{#            <h1><a href="{% url 'students:register' %}">Register</a></h1>#}
-{#            <h1><a href="{% url 'admin:index' %}">Admin</a></h1>#}
-{#            <h1><a href="{% url 'portal' %}">Portal</a></h1>#}
-{##}
-{#            {% if user.is_authenticated %}#}
-{#                <h1>Currently logged in user {{ user.username }}</h1>#}
-{#                <h1><a href="{% url 'logout' %}">Logout</a></h1>#}
-{#            {% else %}#}
-{#                <h1><a href="{% url 'students:user_login' %}">Login</a></h1>#}
-{#            {% endif %}#}
-{##}
-{#        </div>#}
-{##}
-{#    </div>#}
+    {#    <div class="container">#}
+    {#        <div class="row">#}
+    {##}
+    {#            <h1>home</h1>#}
+    {##}
+    {#            <h1><a href="{% url 'students:register' %}">Register</a></h1>#}
+    {#            <h1><a href="{% url 'admin:index' %}">Admin</a></h1>#}
+    {#            <h1><a href="{% url 'portal' %}">Portal</a></h1>#}
+    {##}
+    {#            {% if user.is_authenticated %}#}
+    {#                <h1>Currently logged in user {{ user.username }}</h1>#}
+    {#                <h1><a href="{% url 'logout' %}">Logout</a></h1>#}
+    {#            {% else %}#}
+    {#                <h1><a href="{% url 'students:user_login' %}">Login</a></h1>#}
+    {#            {% endif %}#}
+    {##}
+    {#        </div>#}
+    {##}
+    {#    </div>#}
 </section>
 
 <div class="row">
@@ -431,15 +425,15 @@
 
 <!-- Core -->
 <script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/popper/popper.min.js"></script>
+{#<script src="/static/vendor/test/popper/popper.min.js"></script>#}
 <script src="/static/vendor/bootstrap/bootstrap.min.js"></script>
-<script src="/static/vendor/headroom/headroom.min.js"></script>
+{#<script src="/static/vendor/test/headroom/headroom.min.js"></script>#}
 <!-- Optional JS -->
-<script src="/static/vendor/onscreen/onscreen.min.js"></script>
-<script src="/static/vendor/nouislider/js/nouislider.min.js"></script>
-<script src="/static/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+{#<script src="/static/vendor/test/onscreen/onscreen.min.js"></script>#}
+{#<script src="/static/vendor/test/nouislider/js/nouislider.min.js"></script>#}
+{#<script src="/static/vendor/test/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>#}
 <!-- Argon JS -->
-<script src="/static/js/argon.js?v=1.0.1"></script>
+{#<script src="/static/js/argon.js?v=1.0.1"></script>#}
 </body>
 
 </html>

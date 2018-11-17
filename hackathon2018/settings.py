@@ -150,3 +150,29 @@ MEDIA_ROOT = MEDIA_DIR
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/students/login'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'students'
+# EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
+# server = smtplib.SMTP('smtp.gmail.com:587')
+# server.ehlo()
+# server.starttls()
+# server.login('alosoftinc@gmail.com', 'jorblzyacrzrxnea')
+
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'test@gmail.com'
+SERVER_EMAIL = 'test@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'alosoftinc@gmail.com'
+EMAIL_HOST_PASSWORD = 'jorblzyacrzrxnea'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

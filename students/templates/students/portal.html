@@ -13,8 +13,8 @@
     <link href="/static/css/fresh-bootstrap-table.css" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
         .fresh-table .fixed-table-toolbar .dropdown-menu {
@@ -62,26 +62,38 @@
             {#            </div>#}
             <div class="logo-container full-screen-table-demo">
                 <div class="logo">
-                    <img src="/static/img/logo.png" width="100" height="60">
+                    <a href="/">
+                        <img src="/static/img/logo.png" width="100" height="60">
+                    </a>
                     {#                    <img src="assets/img/new_logo.png">#}
                 </div>
                 <div class="brand" style="font-weight: bolder; color: white;">
                     Students Portal
                 </div>
+            <div>
                 {% if user.is_authenticated %}
-                    <span style="color: white; font-weight: 600;">Welcome {{ user.first_name }}</span>
-                <div class="keep-open btn-group" title="Profile">
-                                    <img data-toggle="dropdown" src="{{ user.userprofileinfo.profile_pic.url }}" alt="" style="width: 60px; border-radius: 60px; cursor: pointer">
+{#                    <span style="color: white; font-weight: 600;">Welcome {{ user.first_name }}</span>#}
+                    <div class="keep-open btn-group" title="Profile">
 
-{#                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"#}
-{#                            aria-expanded="false"><i class="glyphicon fa fa-columns"></i> <span class="caret"></span>#}
-{#                    </button>#}
-                    <ul class="dropdown-menu" role="menu">
+                        {% if user.userprofileinfo.profile_pic %}
+                            <img data-toggle="dropdown" src="{{ user.userprofileinfo.profile_pic.url }}" alt=""
+                                 style="width: 60px; border-radius: 60px; cursor: pointer">
+                        {% else %}
+                            <img data-toggle="dropdown" src="/static/img/default-avatar.png" alt=""
+                                 style="width: 60px; border-radius: 60px; cursor: pointer">
+                        {% endif %}
 
-                        <li><a href="/logout">Logout</a></li>
-                    </ul>
-                </div>
+                        {#                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"#}
+                        {#                            aria-expanded="false"><i class="glyphicon fa fa-columns"></i> <span class="caret"></span>#}
+                        {#                    </button>#}
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/accounts/password_change/">Change Password</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
                 {% endif %}
+            </div>
+
             </div>
         </div>
 

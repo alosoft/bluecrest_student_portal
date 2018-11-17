@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView
+from django.contrib import messages
 from students import models
-from students.forms import UserForm, UserProfileInfoForm
+from students.forms import (
+    UserForm,
+    UserProfileInfoForm,
+    # PasswordChangeForm
+)
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
 
 # Create your views here.
@@ -58,10 +63,19 @@ def register(request):
                 profile.profile_pic = request.FILES['profile_pic']
 
             profile.save()
+            messages.info(request, 'Thank you for registering, You are now Logged In')
+            update_session_auth_hash(request, user)  # Important!
+
+            new_user = authenticate(username=user_form.cleaned_data['username'],
+                                    password=user_form.cleaned_data['password'],
+                                    )
+            login(request, new_user)
+            return HttpResponseRedirect("/")
 
             # registered = True
 
         else:
+            messages.error(request, user_form.errors)
             print('form wasn\'t valid')
             print('form wasn\'t valid')
             print('form wasn\'t valid')
@@ -72,6 +86,7 @@ def register(request):
         profile_form = UserProfileInfoForm()
 
     return render(request, 'students/index.html', {
+        # 'form'
         'user_form': user_form,
         'profile_form': profile_form,
         # 'registered': registered
@@ -106,9 +121,11 @@ def user_login(request):
                 return HttpResponse('Account not Active')
 
         else:
+            messages.error(request, 'Incorrect login details, Try again or reset password')
             print('Login attempt failed')
             print(f'Username: {username} and password {password}')
-            return HttpResponse('invalid login details supplied <a href="/students/login/">Go Back</a>')
+            return redirect('/')
+            # return HttpResponse('invalid login details supplied <a href="/students/login/">Go Back</a>')
 
     else:
         return render(request, 'students/index.html', {})
