@@ -17,13 +17,14 @@
     <!-- Argon CSS -->
     <link type="text/css" href="/static/css/argon.css?v=1.0.1" rel="stylesheet">
     <!-- Docs CSS -->
-{#    <link type="text/css" href="/static/css/docs.min.css" rel="stylesheet">#}
+    {#    <link type="text/css" href="/static/css/docs.min.css" rel="stylesheet">#}
     <link type="text/css" href="/static/css/animate.css" rel="stylesheet">
 
     <style type="text/css">
         ul.errorlist {
             list-style: none;
         }
+
         section.section {
             background-image: url(/static/img/blue_home.jpg);
             background-position: center;
@@ -318,7 +319,7 @@
             <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                 <div class="modal-content">
 
-                    <div class="modal-body p-0">
+                    <div class="modal-body p-0" style="width: 500px">
 
 
                         <div class="card bg-secondary shadow border-0">
@@ -330,77 +331,101 @@
                                       enctype="multipart/form-data">
                                     {{ form.non_field_errors }}
                                     {% csrf_token %}
-                                    <div class="form-group mb-3">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                            </div>
-                                            {{ form.username.errors }}
-                                            <input name="username" class="form-control" placeholder="Username"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                            </div>
-                                            {{ form.email.errors }}
-                                            <input class="form-control" name="email" placeholder="Email" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-6 col-sm-4">
+                                                <div class="form-group mb-3">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                    class="ni ni-single-02"></i></span>
+                                                        </div>
+                                                        {{ form.username.errors }}
+                                                        <input name="username" class="form-control"
+                                                               placeholder="Username"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                    class="ni ni-email-83"></i></span>
+                                                        </div>
+                                                        {{ form.email.errors }}
+                                                        <input class="form-control" name="email" placeholder="Email"
+                                                               type="email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
                                                 <span class="input-group-text"><i
                                                         class="ni ni-lock-circle-open"></i></span>
+                                                        </div>
+                                                        {{ form.first_name.errors }}
+                                                        <input class="form-control" name="first_name"
+                                                               placeholder="First Name"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="ni ni-single-02"></i></span>
+                                                        </div>
+                                                        {{ form.last_name.errors }}
+                                                        <input class="form-control" name="last_name"
+                                                               placeholder="Last Name"
+                                                               type="text">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            {{ form.first_name.errors }}
-                                            <input class="form-control" name="first_name" placeholder="First Name"
-                                                   type="text">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <div class="picture-container">
+                                                        <div class="picture">
+                                                            <img src="/static/img/default-avatar.png"
+                                                                 class="picture-src"
+                                                                 id="wizardPicturePreview" title="">
+                                                            {{ form.profile_pic.errors }}
+                                                            <input name="profile_pic" accept="image/*" type="file"
+                                                                   id="wizard-picture">
+                                                        </div>
+                                                        <h6>Choose Picture</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
+                                        <div class="row">
+                                             <div class="form-group col-6">
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
                                                 <span class="input-group-text"><i
                                                         class="ni ni-lock-circle-open"></i></span>
-                                            </div>
-                                            {{ form.last_name.errors }}
-                                            <input class="form-control" name="last_name" placeholder="Last Name"
-                                                   type="text">
+                                                        </div>
+                                                        {{ form.password.errors }}
+                                                        <input class="form-control" name="password"
+                                                               placeholder="Password"
+                                                               type="password">
+                                                    </div>
+                                                </div>
+{#                                                <div class="form-group col-6">#}
+{#                                                    <div class="input-group input-group-alternative">#}
+{#                                                        <div class="input-group-prepend">#}
+{#                                                <span class="input-group-text"><i#}
+{#                                                        class="ni ni-lock-circle-open"></i></span>#}
+{#                                                        </div>#}
+{#                                                        {{ form.password.errors }}#}
+{#                                                        <input class="form-control" name="password2"#}
+{#                                                               placeholder="Re-enter your Password"#}
+{#                                                               type="password">#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="picture-container">
-                                            <div class="picture">
-                                                <img src="/static/img/default-avatar.png" class="picture-src"
-                                                     id="wizardPicturePreview" title="">
-                                                {{ form.profile_pic.errors }}
-                                                <input name="profile_pic" accept="image/*" type="file"
-                                                       id="wizard-picture">
-                                            </div>
-                                            <h6>Choose Picture</h6>
-                                        </div>
-                                    </div>
-                                    <!--<div class="picture-container">-->
-                                    <!--<div class="picture">-->
-                                    <!--<img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="">-->
-                                    <!--<input type="file" id="wizard-picture">-->
-                                    <!--</div>-->
-                                    <!--<h6>Choose Picture</h6>-->
-                                    <!--</div>-->
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i
-                                                        class="ni ni-lock-circle-open"></i></span>
-                                            </div>
-                                            {{ form.password.errors }}
-                                            <input class="form-control" name="password" placeholder="Password"
-                                                   type="password">
-                                        </div>
-                                    </div>
+
                                     <!--<div class="custom-control custom-control-alternative custom-checkbox">-->
                                     <!--<input class="custom-control-input" id=" customCheckLogin" type="checkbox">-->
                                     <!--<label class="custom-control-label"-->
