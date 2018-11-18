@@ -7,7 +7,7 @@ from students.forms import (
     UserForm,
     UserProfileInfoForm,
     # PasswordChangeForm
-)
+    UserProfileChangeForm)
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -63,13 +63,15 @@ def register(request):
                 profile.profile_pic = request.FILES['profile_pic']
 
             profile.save()
-            messages.info(request, 'Thank you for registering, You are now Logged In')
             update_session_auth_hash(request, user)  # Important!
 
             new_user = authenticate(username=user_form.cleaned_data['username'],
                                     password=user_form.cleaned_data['password'],
                                     )
             login(request, new_user)
+
+            messages.info(request, f'Thank you for registering, You are now Logged In {new_user.username}')
+
             return HttpResponseRedirect("/")
 
             # registered = True
@@ -130,21 +132,41 @@ def user_login(request):
     else:
         return render(request, 'students/index.html', {})
 
-# def index(request):
-#     data = models.Record.objects.all()
+@login_required
+def change(request):
+    if request.method == 'POST':
+        change_form = UserProfileChangeForm(request.POST, instance=request.user)
+        picture_form = UserProfileInfoForm(request.FILES, instance=request.user.userprofileinfo)
+        if change_form.is_valid() and picture_form.is_valid():
+            change_form.save()
+
+            new_picture = picture_form.save(commit=False)
+            if 'profile_pic' in request.FILES:
+                new_picture.profile_pic = request.FILES['profile_pic']
+            new_picture.save()
+
+            messages.success(request, 'Profile updated successfully')
+            return redirect('/')
+        else:
+            messages.error(request, 'Error making changes')
+            return HttpResponseRedirect('/change')
+    change_form = UserProfileChangeForm(instance=request.user)
+    picture_form = UserProfileInfoForm(instance=request.user.userprofileinfo)
+    return render(request, 'students/index.html',
+                  {'change_form': change_form, 'picture_form': picture_form, 'route': 'change'})
+    # return render(request, 'students/change.html', {'change_form': change_form, 'picture_form': picture_form})
+
 #
-#     form = forms.SearchForm()
-#     # if request.method == 'GET':
-#     data_query = request.GET.get('query', None)
-#     print(data_query)
-#     if data_query:
-#         search_results = data.filter(
-#             Q(program__icontains=data_query) |
-#             Q(semester__icontains=data_query)
-#         )
-#         record_list = {
-#             'record_list': search_results,
-#         }
-#         return render(request, 'students/index.html', context=record_list)
+# def change_picture(request):
+#     if request.method == 'POST':
+#         picture_form = UserProfileInfoForm(request.FILES, instance=request.user.userprofileinfo)
+#         if picture_form.is_valid():
+#             picture_form.save()
 #
-#     return render(request, 'students/index.html', {'form': form})
+#             messages.success(request, 'User Profile Picture changed successfully')
+#             return redirect('/')
+#         else:
+#             messages.error(request, 'Error making changes')
+#             return HttpResponseRedirect('/change')
+#     picture_form = UserProfileInfoForm(instance=request.user.userprofileinfo)
+#     return render(request, 'students/change-picture.html', {'form': picture_form})
