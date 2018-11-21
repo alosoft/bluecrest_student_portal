@@ -12,5 +12,10 @@ class RecordsAdmin(admin.ModelAdmin):
                     'no_of_students', 'planned_sessions', 'actual_sessions', 'attendance', 'faculty']
 
 
+class UserProfileInfoAdmin(admin.ModelAdmin):
+    list_display = ['user', 'profile_semester', 'profile_status', 'profile_program']
+    list_filter = ['profile_status']
+
+
 admin.site.register(Record, RecordsAdmin)
-admin.site.register(UserProfileInfo)
+admin.site.register(UserProfileInfo, UserProfileInfoAdmin)

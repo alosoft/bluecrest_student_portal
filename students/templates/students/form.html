@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/static/form/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/static/form/vendor/boostrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/form/vendor/acc-wizard-master/release/acc-wizard.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/static/form/css/style.css">
+    <style type="text/css">
+        ul#national {
+            position: unset;
+        }
+
+        .form-radio {
+            width: 310px;
+        }
+
+        .sub-head {
+            margin-left: 15px;
+        }
+
+        .custom {
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+
+    <div class="container">
+        <div class="acc-wizard">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default active">
+                    <div class="panel-heading" id="headingOne">
+                        <h3>
+                            <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">Applicant Personal
+                                Information</a>
+                        </h3>
+                    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <form method="POST">
+                                <fieldset>
+                                    <div class="form-row">
+                                        <h3 class="sub-head">PERSONAL DETAILS</h3>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first_name" class="form-label">First name</label>
+                                            <input type="text" name="first_name" id="first_name"
+                                                   placeholder="E.g Raymond"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="last_name" class="form-label">Last name</label>
+                                            <input type="text" name="last_name" id="last_name"
+                                                   placeholder="E.g. Agyei"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle_name" class="form-label">Middle name</label>
+                                            <input type="text" name="last_name" id="middle_name"
+                                                   placeholder="E.g. Adutwum"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group-flex">
+                                            <div class="form-date">
+                                                <label for="birth_date" class="form-label">Date of birth</label>
+                                                <div class="form-date-group">
+                                                    <div class="form-date-item">
+                                                        <select id="birth_date" name="birth_date"></select>
+                                                    </div>
+                                                    <div class="form-date-item">
+                                                        <select id="birth_month" name="birth_month"></select>
+                                                    </div>
+                                                    <div class="form-date-item">
+                                                        <select id="birth_year" name="birth_year"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-radio">
+                                                <label for="gender">Gender</label>
+                                                <div class="form-flex">
+                                                    <input type="radio" name="gender" value="male" id="male"/>
+                                                    <label for="male"><img src="/static/form/images/icon-male.png"
+                                                                           alt="Male"></label>
+
+                                                    <input type="radio" name="gender" value="female" id="female"/>
+                                                    <label for="female"><img src="/static/form/images/icon-female.png"
+                                                                             alt="Female"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="marital_status" class="form-label">Marital Status</label>
+                                            <input type="text" name="marital_status" id="marital_status"
+                                                   placeholder="E.g. Married or Unmarried"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="place_of_birth" class="form-label">Place of Birth</label>
+                                            <input type="text" name="place_of_birth" id="place_of_birth"
+                                                   placeholder="E.g Duayaw Nkwanta"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="resident" class="form-label">Permanent Residential
+                                                Address(Do not provide a Post
+                                                Office Box number)</label>
+                                            <input type="text" name="resident" id="resident"
+                                                   placeholder="E.g. Zongo, House Number D25/3"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="region" class="form-label">Region of Birth</label>
+                                            <input type="text" name="region" id="region"
+                                                   placeholder="E.g. Brong Ahafo"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="district_of_birth" class="form-label">District of Birth</label>
+                                            <input type="text" name="district_of_birth" id="district_of_birth"
+                                                   placeholder="E.g Tano North District"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="locality_of_birth" class="form-label">Locality of Birth</label>
+                                            <input type="text" name="locality_of_birth" id="locality_of_birth"
+                                                   placeholder="E.g Duayaw Nkwanta"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-select">
+                                            <label for="national" class="form-label"><b>What is the highest level of
+                                                education that you have completed and have a certificate
+                                                for?</b></label>
+                                            <div class="select-group">
+
+                                                <select name="education" id="national">
+                                                    <option value="">
+                                                        Diploma
+                                                    </option>
+                                                    <option value="Degree" data-url=''>
+                                                        Degree
+                                                    </option>
+                                                    <option value="Professional" data-url=''>
+                                                        Professional
+                                                    </option>
+                                                    <option value="Training College" data-url=''>
+                                                        Training College
+                                                    </option>
+                                                    <option value="A Level" data-url=''>
+                                                        A Level
+                                                    </option>
+                                                    <option value="SSS/SHS" data-url=''>
+                                                        SSS/SHS
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-radio">
+                                            <label for="parents_deceased"><b>Please indicate whether any of your parents
+                                                is
+                                                deceased </b>(Please provide evidence/proof as a supporting
+                                                document)</label>
+                                            <div class="form-flex">
+                                                <input type="radio" name="parents_deceased" value="None" id="none"/>
+                                                <label style="width: auto; height: auto; margin: 1px;"
+                                                       for="none">None</label>
+
+                                                <input type="radio" name="parents_deceased" value="Mother" id="mother"/>
+                                                <label style="width: auto; height: auto; margin: 1px;" for="mother">Mother</label>
+
+                                                <input type="radio" name="parents_deceased" value="Father" id="father"/>
+                                                <label style="width: auto; height: auto; margin: 1px;" for="father">Father</label>
+
+                                                <input type="radio" name="parents_deceased" value="Both" id="both"/>
+                                                <label style="width: auto; height: auto; margin: 1px;"
+                                                       for="both">Both</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="postal_address" class="form-label">Postal Address</label>
+                                            <input type="text" name="postal_address" id="postal_address"
+                                                   placeholder="E.g Post Office Box 100"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="parents_stage" class="form-label"><b>At what stage of your
+                                                education did either parent or both parents become deceased? (Please
+                                                provide evidence)</b></label>
+                                            <input type="text" name="parents_state" id="parents_stage"
+                                                   placeholder="E.g SHS"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <h3 class="sub-head">IDENTIFICATION NUMBERS</h3>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="student_id" class="form-label">Student ID</label>
+                                            <input type="number" name="student_id" id="student_id"
+                                                   placeholder="E.g 30062XXXXXXXXX"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ssnit" class="form-label">SSNIT / Reference No:</label>
+                                            <input type="number" name="ssnit" id="ssnit"
+                                                   placeholder="E.g SNIT"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mobile_number" class="form-label">Mobile No:</label>
+                                            <input type="number" name="mobile_number" id="mobile_number"
+                                                   placeholder="E.g SNIT"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="voter_id" class="form-label">Voter ID:</label>
+                                            <input type="number" name="voter_id" id="voter_id"
+                                                   placeholder="E.g SNIT"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="nhis" class="form-label">National Health Insurance No
+                                                (optional)</label>
+                                            <input type="number" name="nhis" id="nhis"
+                                                   placeholder="E.g 140XXXXX"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ni" class="form-label">National Identification No
+                                                (optional)</label>
+                                            <input type="number" name="ni" id="ni"
+                                                   placeholder="E.g 1360XXXXX"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="ezwich" class="form-label">E-zwich Account Name (Name used to
+                                                acquire E-zwich card):</label>
+                                            <input type="text" name="ezwich" id="ezwich"
+                                                   placeholder="E.g John Doe"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ezwich_number" class="form-label">E-zwich No:</label>
+                                            <input type="number" name="ezwich_number" id="ezwich_number"
+                                                   placeholder="E.g 1360XXXXX"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email:</label>
+                                            <input type="email" name="email" id="email"
+                                                   placeholder="E.g admin@alosoft.tech"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <h3 class="sub-head">HOUSING INFORMATION</h3>
+                                    </div>
+                                    <div class="form-row sub-head">
+                                        <div class="form-radio" style="width: 900px">
+                                            <label for="housing"><b>Whom do you live with whiles at home?</b></label>
+                                            <div class="form-flex">
+                                                <input type="radio" name="housing" value="Father and Mother"
+                                                       id="father_and_mother"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="father_and_mother">Father and Mother</label>
+
+                                                <input type="radio" name="housing" value="Spouse" id="spouse"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="spouse">Spouse</label>
+
+                                                <input type="radio" name="housing" value="Guardian" id="guardian"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="guardian">Guardian</label>
+
+                                                <input type="radio" name="housing" value="Father and Step Mother"
+                                                       id="father_and_step_mother"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="father_and_step_mother">Father and Step Mother</label>
+
+                                                <input type="radio" name="housing" value="Mother and Step Father"
+                                                       id="mother_and_step_father"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="mother_and_step_father">Mother and Step Father</label>
+
+                                                <input type="radio" name="housing" value="Father Alone"
+                                                       id="father_alone"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="father_alone">Father Alone</label>
+
+                                                <input type="radio" name="housing" value="Mother Alone"
+                                                       id="mother_alone"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="mother_alone">Mother Alone</label>
+
+                                                <input type="radio" name="housing"
+                                                       value="Some Other Relative / Friend(s)" id="other_relative"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="other_relative">Some Other Relative / Friend(s)</label>
+
+                                                <input type="radio" name="housing" value="Live Alone" id="live_alone"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="live_alone">Live
+                                                    Alone</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row sub-head">
+                                        <div class="form-radio" style="width: 900px">
+                                            <label for="housing_with"><b>What type of house do you permanently live
+                                                in?</b></label>
+                                            <div class="form-flex">
+                                                <input type="radio" name="housing_type" value="4+ Bedroom Apartment"
+                                                       id="bedroom_apartment"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="bedroom_apartment">4+ Bedroom Apartment</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="2/3 Bedroom Self Compound" id="bedroom_self_compound"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="bedroom_self_compound">2/3 Bedroom Self Compound</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="2/3 Bedroom Semi-Detached" id="bedroom_semi_detached"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="bedroom_semi_detached">2/3 Bedroom Semi-Detached</label>
+
+                                                <input type="radio" name="housing_type" value="Chamber and Hall"
+                                                       id="chamber_and_hall"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="chamber_and_hall">Chamber and Hall</label>
+
+                                                <input type="radio" name="housing_type" value="Compound House"
+                                                       id="compound_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="compound_house">Compound House</label>
+
+                                                <input type="radio" name="housing_type" value="Single Room"
+                                                       id="single_room"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="single_room">Single
+                                                    Room</label>
+
+                                                <input type="radio" name="housing_type" value="Mud/Swish House"
+                                                       id="mud_swish_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="mud_swish_house">Mud/Swish House</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row sub-head">
+                                        <div class="form-radio" style="width: 900px">
+                                            <label for="housing_with"><b>Who owns the house your household occupies?
+                                            </b></label>
+                                            <div class="form-flex">
+                                                <input type="radio" name="housing_type" value="Rented House"
+                                                       id="rented_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="rented_house">Rented House</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Own House" id="own_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="own_house">Own House</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Family House (with rent)" id="family_house_with_rent"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="family_house_with_rent">Family House (with rent)</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Family House (without rent)"
+                                                       id="family_house_without_rent"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="family_house_without_rent">Family House (without
+                                                    rent)</label>
+
+                                                <input type="radio" name="housing_type" value="Care Taker"
+                                                       id="care_taker"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="care_taker">Care Taker</label>
+
+                                                <input type="radio" name="housing_type" value="Official Residence"
+                                                       id="official_residence"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="official_residence">Official Residence</label>
+
+                                                <input type="radio" name="housing_type" value="Squatting"
+                                                       id="squatting"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="squatting">Squatting</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row sub-head">
+                                        <div class="form-radio" style="width: 900px">
+                                            <label for="housing_with"><b>If rented, who pays the rent for your house
+                                                your household occupies?</b></label>
+                                            <div class="form-flex">
+                                                <input type="radio" name="housing_type" value="Both Parents"
+                                                       id="both_parents"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="both_parents">Both Parents</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Father" id="father_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="father_house">Father</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Mother" id="mother_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="mother_house">Mother</label>
+
+                                                <input type="radio" name="housing_type"
+                                                       value="Guardian"
+                                                       id="guardian_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="guardian_house">Guardian</label>
+
+                                                <input type="radio" name="housing_type" value="Spouse"
+                                                       id="spouse_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="spouse_house">Spouse</label>
+
+                                                <input type="radio" name="housing_type" value="Other Relative"
+                                                       id="other_relative_house"/>
+                                                <label style="width: auto; height: auto; margin: 1px"
+                                                       for="other_relative_house">Other Relative</label>
+
+                                                <input type="radio" name="housing_type" value="Self"
+                                                       id="self"/>
+                                                <label style="width: auto; height: auto; margin: 1px" for="self">Self</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingTwo">
+                        <h3>
+                            <a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">Payment
+                                infomation</a>
+                        </h3>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form method="post">
+                                <fieldset>
+                                    <div class="form-row">
+                                        <h3 class="sub-head">Am Tired</h3>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingThree">
+                        <h3>
+                            <a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">Additional
+                                infomation</a>
+                        </h3>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form method="post">
+                                <fieldset>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Your Email</label>
+                                            <input type="email" name="email" id="email"
+                                                   placeholder="E.g. john123@gmail.com"/>
+                                        </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="headingFour">
+                        <h3>
+                            <a href="#collapseFour" data-toggle="panel-collapse"
+                               data-parent="#accordion">Specialities</a>
+                        </h3>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form method="post">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="specialities" class="form-label">Tell us your specialities</label>
+                                        <textarea name="specialities" id="specialities"
+                                                  placeholder="Eg. I’m very good at UI design ...."></textarea>
+                                    </div>
+                                </fieldset>
+                                <div class="form-submit">
+                                    <input type="submit" value="Submit" class="au-btn">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="/static/form/vendor/jquery/jquery.min.js"></script>
+<script src="/static/form/vendor/boostrap/bootstrap.min.js"></script>
+<script src="/static/form/vendor/acc-wizard-master/release/acc-wizard.min.js"></script>
+<script src="/static/form/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/static/form/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="/static/form/vendor/jquery-steps/jquery.steps.min.js"></script>
+<script src="/static/form/vendor/minimalist-picker/dobpicker.js"></script>
+<script src="/static/form/js/main.js"></script>
+</body>
+</html>

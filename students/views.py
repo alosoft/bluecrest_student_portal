@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -36,12 +37,8 @@ def index(request):
 
 
 def register(request):
-    registered = False
 
     print('route accessed')
-    print('route accessed')
-    print('route accessed')
-    print(request.method)
 
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -49,9 +46,14 @@ def register(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             print('form was valid')
-            print('form was valid')
-            print('form was valid')
-            print('form was valid')
+
+            if request.POST.get('password') != request.POST.get('password2'):
+                messages.error(request, 'Password fields do not match!')
+                return HttpResponseRedirect("/")
+                # raise forms.ValidationError(
+                #     'Password fields do not match'
+                # )
+
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -72,7 +74,7 @@ def register(request):
 
             messages.info(request, f'Thank you for registering, You are now Logged In {new_user.username}')
 
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/portal")
 
             # registered = True
 
@@ -117,10 +119,12 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                # messages.success(request, f'Welcome {user.username}')
+                return HttpResponseRedirect(reverse('portal'))
 
             else:
-                return HttpResponse('Account not Active')
+                messages.error(request, 'Account not Active')
+                return HttpResponseRedirect('Account not Active')
 
         else:
             messages.error(request, 'Incorrect login details, Try again or reset password')
@@ -132,29 +136,37 @@ def user_login(request):
     else:
         return render(request, 'students/index.html', {})
 
+
 @login_required
 def change(request):
     if request.method == 'POST':
+        print(request.POST, request.FILES)
         change_form = UserProfileChangeForm(request.POST, instance=request.user)
-        picture_form = UserProfileInfoForm(request.FILES, instance=request.user.userprofileinfo)
-        if change_form.is_valid() and picture_form.is_valid():
+        profile_form = UserProfileInfoForm(request.FILES, instance=request.user.userprofileinfo)
+        print(request.POST.get('profile_semester'))
+        print(request.POST.get('profile_program'))
+        if change_form.is_valid() and profile_form.is_valid():
             change_form.save()
 
-            new_picture = picture_form.save(commit=False)
+            new_profile = profile_form.save(commit=False)
             if 'profile_pic' in request.FILES:
-                new_picture.profile_pic = request.FILES['profile_pic']
-            new_picture.save()
+                new_profile.profile_pic = request.FILES['profile_pic']
+            new_profile.profile_semester = request.POST['profile_semester']
+            new_profile.profile_program = request.POST['profile_program']
+            new_profile.save()
 
             messages.success(request, 'Profile updated successfully')
             return redirect('/')
         else:
-            messages.error(request, 'Error making changes')
-            return HttpResponseRedirect('/change')
+            messages.error(request, change_form.errors)
+            messages.error(request, profile_form.errors)
+            return HttpResponseRedirect('/students/change')
     change_form = UserProfileChangeForm(instance=request.user)
-    picture_form = UserProfileInfoForm(instance=request.user.userprofileinfo)
+    profile_form = UserProfileInfoForm(instance=request.user.userprofileinfo)
     return render(request, 'students/index.html',
-                  {'change_form': change_form, 'picture_form': picture_form, 'route': 'change'})
+                  {'change_form': change_form, 'profile_form': profile_form, 'route': 'change'})
     # return render(request, 'students/change.html', {'change_form': change_form, 'picture_form': picture_form})
+
 
 #
 # def change_picture(request):
@@ -170,3 +182,6 @@ def change(request):
 #             return HttpResponseRedirect('/change')
 #     picture_form = UserProfileInfoForm(instance=request.user.userprofileinfo)
 #     return render(request, 'students/change-picture.html', {'form': picture_form})
+
+def application_forms(request):
+    return render(request, 'students/form.html')

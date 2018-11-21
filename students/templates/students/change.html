@@ -5,14 +5,22 @@
 {% endif %}
 
 
+{#<form action="" method="post" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    <input type="text" name="first_name" value="{{ user.first_name }}">#}
+{#    <input type="text" name="last_name" value="{{ user.last_name }}">#}
+{#    <input type="email" name="email" value="{{ user.email }}">#}
+{#    <input type="file" name="profile_pic" accept="image/">#}
+{#    <button type="submit">change profile</button>#}
+{#</form>#}
+
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" name="first_name" value="{{ user.first_name }}">
-    <input type="text" name="last_name" value="{{ user.last_name }}">
-    <input type="email" name="email" value="{{ user.email }}">
-    <input type="file" name="profile_pic" accept="image/">
-    <button type="submit">change profile</button>
+    {{ change_form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit">Change</button>
 </form>
+
 
 {##}
 {##}

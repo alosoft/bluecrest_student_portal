@@ -15,6 +15,7 @@
     <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link type="text/css" href="/static/css/animate.css" rel="stylesheet">
 
     <style type="text/css">
         .fresh-table .fixed-table-toolbar .dropdown-menu {
@@ -70,89 +71,164 @@
                 <div class="brand" style="font-weight: bolder; color: white;">
                     Students Portal
                 </div>
-            <div>
-                {% if user.is_authenticated %}
-{#                    <span style="color: white; font-weight: 600;">Welcome {{ user.first_name }}</span>#}
-                    <div class="keep-open btn-group" title="Profile">
+                {#                {% if messages %}#}
+                {#                    {% for message in messages %}#}
+                {#                        <div class="container" style="height: 10vh;">#}
+                {#                            <div class="row">#}
+                {#                                <div class="col-6 mr-auto ml-auto">#}
+                {#                                    <div class="alert alert-success text-center animated fadeOut delay-5s" role="alert">#}
+                {#                                        {{ message }}#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {##}
+                {#                    {% endfor %}#}
+                {#                {% endif %}#}
+                <div>
+                    {% if user.is_authenticated %}
+                        {#                    <span style="color: white; font-weight: 600;">Welcome {{ user.first_name }}</span>#}
+                        <div class="keep-open btn-group" title="Profile">
 
-                        {% if user.userprofileinfo.profile_pic %}
-                            <img data-toggle="dropdown" src="{{ user.userprofileinfo.profile_pic.url }}" alt=""
-                                 style="width: 60px; border-radius: 60px; cursor: pointer">
-                        {% else %}
-                            <img data-toggle="dropdown" src="/static/img/default-avatar.png" alt=""
-                                 style="width: 60px; border-radius: 60px; cursor: pointer">
-                        {% endif %}
+                            {% if user.userprofileinfo.profile_pic %}
+                                <img data-toggle="dropdown" src="{{ user.userprofileinfo.profile_pic.url }}" alt=""
+                                     style="width: 60px; border-radius: 60px; cursor: pointer">
+                            {% else %}
+                                <img data-toggle="dropdown" src="/static/img/default-avatar.png" alt=""
+                                     style="width: 60px; border-radius: 60px; cursor: pointer">
+                            {% endif %}
 
-                        {#                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"#}
-                        {#                            aria-expanded="false"><i class="glyphicon fa fa-columns"></i> <span class="caret"></span>#}
-                        {#                    </button>#}
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/accounts/password_change/">Change Password</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
+                            {#                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"#}
+                            {#                            aria-expanded="false"><i class="glyphicon fa fa-columns"></i> <span class="caret"></span>#}
+                            {#                    </button>#}
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/accounts/password_change/">Change Password</a></li>
+                                <li><a href="/accounts/password_change/">Change Password</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
 
             </div>
         </div>
 
         <table id="fresh-table" class="table">
             <thead>
-            <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="batch code" data-sortable="true">Batch Code</th>
-            <th data-field="time pattern" data-sortable="true">Time Pattern</th>
-            <th data-field="session" data-sortable="true">Session</th>
-            <th data-field="program" data-sortable="true">Program</th>
-            <th data-field="semester" data-sortable="true">Semester</th>
-            <th data-field="course" data-sortable="true">Course</th>
-            <th data-field="course name" data-sortable="true">Course Name</th>
-            <th data-field="planned start date" data-sortable="true">Planned Start date</th>
-            <th data-field="planned end date" data-sortable="true">Planned End Date</th>
-            <th data-field="actual start date" data-sortable="true">Actual Start Date</th>
-            <th data-field="actual end date" data-sortable="true">Actual End Date</th>
-            <th data-field="no of students" data-sortable="true">No. of Students</th>
-            <th data-field="planned sessions" data-sortable="true">Planned Sessions</th>
-            <th data-field="actual sessions" data-sortable="true">Actual Sessions</th>
-            <th data-field="attendance" data-sortable="true">Attendance %</th>
-            <th data-field="faculty" data-sortable="true">Faculty</th>
-            {#            <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>#}
+            {#            <th data-field="id" data-sortable="true">ID</th>#}
+            {% if user.userprofileinfo.profile_status == 'Lecturer' %}
+                <th data-field="batch code" data-sortable="true">Batch Code</th>
+                <th data-field="time pattern" data-sortable="true">Time Pattern</th>
+                <th data-field="session" data-sortable="true">Session</th>
+                <th data-field="program" data-sortable="true">Program</th>
+                <th data-field="semester" data-sortable="true">Semester</th>
+                <th data-field="course" data-sortable="true">Course</th>
+                <th data-field="course name" data-sortable="true">Course Name</th>
+                <th data-field="planned start date" data-sortable="true">Planned Start date</th>
+                <th data-field="planned end date" data-sortable="true">Planned End Date</th>
+                <th data-field="actual start date" data-sortable="true">Actual Start Date</th>
+                <th data-field="actual end date" data-sortable="true">Actual End Date</th>
+                <th data-field="no of students" data-sortable="true">No. of Students</th>
+                <th data-field="planned sessions" data-sortable="true">Planned Sessions</th>
+                <th data-field="actual sessions" data-sortable="true">Actual Sessions</th>
+                <th data-field="attendance" data-sortable="true">Attendance %</th>
+                {#            <th data-field="faculty" data-sortable="true">Faculty</th>#}
+            {% else %}
+                <th data-field="batch code" data-sortable="true">Batch Code</th>
+                <th data-field="time pattern" data-sortable="true">Time Pattern</th>
+                <th data-field="session" data-sortable="true">Session</th>
+{#                <th data-field="program" data-sortable="true">Program</th>#}
+{#                <th data-field="semester" data-sortable="true">Semester</th>#}
+                <th data-field="course" data-sortable="true">Course</th>
+                <th data-field="course name" data-sortable="true">Course Name</th>
+                <th data-field="planned start date" data-sortable="true">Planned Start date</th>
+                <th data-field="planned end date" data-sortable="true">Planned End Date</th>
+                <th data-field="actual start date" data-sortable="true">Actual Start Date</th>
+                <th data-field="actual end date" data-sortable="true">Actual End Date</th>
+                <th data-field="no of students" data-sortable="true">No. of Students</th>
+                <th data-field="planned sessions" data-sortable="true">Planned Sessions</th>
+                <th data-field="actual sessions" data-sortable="true">Actual Sessions</th>
+                <th data-field="attendance" data-sortable="true">Attendance %</th>
+                <th data-field="faculty" data-sortable="true">Faculty</th>
+            {% endif %}
             </thead>
             <tbody>
-            {% for record in record_list reversed %}
-                <tr>
-                    <td>{{ record.id }}</td>
-                    <td>{{ record.batch_code }}</td>
-                    <td>{{ record.time_pattern }}</td>
-                    <td>{{ record.session }}</td>
-                    <td>{{ record.program }}</td>
-                    <td>{{ record.semester }}</td>
-                    <td>{{ record.course }}</td>
-                    <td>{{ record.course_name }}</td>
-                    <td>{{ record.planned_start_date }}</td>
-                    <td>{{ record.planned_end_date }}</td>
-                    {% if record.actual_start_date == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.actual_start_date }}</td>
-                    {% endif %}
-                    {% if record.actual_end_date == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.actual_end_date }}</td>
-                    {% endif %}
-                    <td>{{ record.no_of_students }}</td>
-                    <td>{{ record.planned_sessions }}</td>
-                    <td>{{ record.actual_sessions }}</td>
-                    {% if record.attendance == null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ record.attendance }} %</td>
-                    {% endif %}
-                    <td>{{ record.faculty }}</td>
-                </tr>
-            {% endfor %}
 
+            {% if user.userprofileinfo.profile_status == 'Lecturer' %}
+
+                {% for record in record_list %}
+                    {#                    {% if user.userprofileinfo.profile_semester == record.semester and user.userprofileinfo.profile_program == record.program %}#}
+                    <tr>
+                        <td>{{ record.batch_code }}</td>
+                        <td>{{ record.time_pattern }}</td>
+                        <td>{{ record.session }}</td>
+                        <td>{{ record.program }}</td>
+                        <td>{{ record.semester }}</td>
+                        <td>{{ record.course }}</td>
+                        <td>{{ record.course_name }}</td>
+                        <td>{{ record.planned_start_date }}</td>
+                        <td>{{ record.planned_end_date }}</td>
+                        {% if record.actual_start_date == null %}
+                            <td>-</td>
+                        {% else %}
+                            <td>{{ record.actual_start_date }}</td>
+                        {% endif %}
+                        {% if record.actual_end_date == null %}
+                            <td>-</td>
+                        {% else %}
+                            <td>{{ record.actual_end_date }}</td>
+                        {% endif %}
+                        <td>{{ record.no_of_students }}</td>
+                        <td>{{ record.planned_sessions }}</td>
+                        <td>{{ record.actual_sessions }}</td>
+                        {% if record.attendance == null %}
+                            <td>-</td>
+                        {% else %}
+                            <td>{{ record.attendance }} %</td>
+                        {% endif %}
+                        {#                        <td>{{ record.faculty }}</td>#}
+                    </tr>
+                    {#            {% endif %}#}
+                {% endfor %}
+
+            {% else %}
+
+                {% for record in record_list %}
+                    {% if user.userprofileinfo.profile_semester == record.semester and user.userprofileinfo.profile_program == record.program %}
+                        <tr>
+                            <td>{{ record.batch_code }}</td>
+                            <td>{{ record.time_pattern }}</td>
+                            <td>{{ record.session }}</td>
+{#                            <td>{{ record.program }}</td>#}
+{#                            <td>{{ record.semester }}</td>#}
+                            <td>{{ record.course }}</td>
+                            <td>{{ record.course_name }}</td>
+                            <td>{{ record.planned_start_date }}</td>
+                            <td>{{ record.planned_end_date }}</td>
+                            {% if record.actual_start_date == null %}
+                                <td>-</td>
+                            {% else %}
+                                <td>{{ record.actual_start_date }}</td>
+                            {% endif %}
+                            {% if record.actual_end_date == null %}
+                                <td>-</td>
+                            {% else %}
+                                <td>{{ record.actual_end_date }}</td>
+                            {% endif %}
+                            <td>{{ record.no_of_students }}</td>
+                            <td>{{ record.planned_sessions }}</td>
+                            <td>{{ record.actual_sessions }}</td>
+                            {% if record.attendance == null %}
+                                <td>-</td>
+                            {% else %}
+                                <td>{{ record.attendance }} %</td>
+                            {% endif %}
+                            <td>{{ record.faculty }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+            {% endif %}
             </tbody>
         </table>
     </div>
